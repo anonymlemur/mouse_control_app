@@ -92,11 +92,10 @@ class _MouseControlScreenState extends State<MouseControlScreen> {
   }
 
   // --- Event Handling ---
-
   void _handleKey(RawKeyEvent event) {
-    if (event is RawKeyDownEvent) {
-      final String key = event.logicalKey.keyLabel;
-      _sendCommand('KEYBOARD', {'key': key});
+    if (event is RawKeyDownEvent && event.character != null && event.logicalKey.keyLabel != "Shift Left" ) {
+      final String? character = event.character;
+      _sendCommand('KEYBOARD', {'key': character!});
     }
   }
 
